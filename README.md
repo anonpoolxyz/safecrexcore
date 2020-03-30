@@ -75,3 +75,13 @@ Translations are periodically pulled from Transifex and merged into the git repo
 pull from Transifex would automatically overwrite them again.
 
  
+
+ - Name: Safecrex
+ - Ticker: SFCX
+ - Premine: 10,000,000 SFCX
+ - Pow Reward: 10 SFCX
+ - Masternode Reward: 70%
+ - Masternode collateral: 1,000 SFCX
+ - Algo: x11
+ - RPC PORT: 9791
+ - P2P PORT: 9792
