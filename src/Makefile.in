@@ -919,7 +919,8 @@ am__qt_libbitcoinqt_a_SOURCES_DIST = qt/bantablemodel.cpp \
 @ENABLE_QT_TRUE@	qt/qt_libbitcoinqt_a-moc_walletmodel.$(OBJEXT) \
 @ENABLE_QT_TRUE@	qt/qt_libbitcoinqt_a-moc_walletview.$(OBJEXT)
 @ENABLE_QT_TRUE@am__objects_9 = qt/qt_libbitcoinqt_a-paymentrequest.pb.$(OBJEXT)
-@ENABLE_QT_TRUE@am__objects_10 = qt/qt_libbitcoinqt_a-qrc_safecrex.$(OBJEXT)
+@ENABLE_QT_TRUE@am__objects_10 =  \
+@ENABLE_QT_TRUE@	qt/qt_libbitcoinqt_a-qrc_safecrex.$(OBJEXT)
 @ENABLE_QT_TRUE@am__objects_11 = qt/qt_libbitcoinqt_a-qrc_safecrex_locale.$(OBJEXT)
 @ENABLE_QT_TRUE@nodist_qt_libbitcoinqt_a_OBJECTS = $(am__objects_8) \
 @ENABLE_QT_TRUE@	$(am__objects_3) $(am__objects_9) \
@@ -959,11 +960,10 @@ am__installdirs = "$(DESTDIR)$(libdir)" "$(DESTDIR)$(bindir)" \
 LTLIBRARIES = $(lib_LTLIBRARIES)
 @BUILD_BITCOIN_LIBS_TRUE@libsafecrexconsensus_la_DEPENDENCIES =  \
 @BUILD_BITCOIN_LIBS_TRUE@	$(LIBSECP256K1)
-am__libsafecrexconsensus_la_SOURCES_DIST =  \
-	crypto/hmac_sha512.cpp crypto/ripemd160.cpp crypto/sha1.cpp \
-	crypto/sha256.cpp crypto/sha512.cpp hash.cpp \
-	primitives/transaction.cpp pubkey.cpp \
-	script/safecrexconsensus.cpp script/interpreter.cpp \
+am__libsafecrexconsensus_la_SOURCES_DIST = crypto/hmac_sha512.cpp \
+	crypto/ripemd160.cpp crypto/sha1.cpp crypto/sha256.cpp \
+	crypto/sha512.cpp hash.cpp primitives/transaction.cpp \
+	pubkey.cpp script/safecrexconsensus.cpp script/interpreter.cpp \
 	script/script.cpp uint256.cpp utilstrencodings.cpp \
 	compat/glibc_compat.cpp
 @BUILD_BITCOIN_LIBS_TRUE@@GLIBC_BACK_COMPAT_TRUE@am__objects_12 = compat/libsafecrexconsensus_la-glibc_compat.lo
@@ -991,8 +991,8 @@ libsafecrexconsensus_la_LINK = $(LIBTOOL) $(AM_V_lt) --tag=CXX \
 	$(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=link $(CXXLD) \
 	$(libsafecrexconsensus_la_CXXFLAGS) $(CXXFLAGS) \
 	$(libsafecrexconsensus_la_LDFLAGS) $(LDFLAGS) -o $@
-@BUILD_BITCOIN_LIBS_TRUE@am_libsafecrexconsensus_la_rpath =  \
-@BUILD_BITCOIN_LIBS_TRUE@	-rpath $(libdir)
+@BUILD_BITCOIN_LIBS_TRUE@am_libsafecrexconsensus_la_rpath = -rpath \
+@BUILD_BITCOIN_LIBS_TRUE@	$(libdir)
 @BUILD_BITCOIND_TRUE@am__EXEEXT_1 = safecrexd$(EXEEXT)
 @BUILD_BITCOIN_UTILS_TRUE@am__EXEEXT_2 = safecrex-cli$(EXEEXT) \
 @BUILD_BITCOIN_UTILS_TRUE@	safecrex-tx$(EXEEXT)
@@ -1002,14 +1002,12 @@ libsafecrexconsensus_la_LINK = $(LIBTOOL) $(AM_V_lt) --tag=CXX \
 @ENABLE_QT_TESTS_TRUE@am__EXEEXT_6 =  \
 @ENABLE_QT_TESTS_TRUE@	qt/test/test_safecrex-qt$(EXEEXT)
 PROGRAMS = $(bin_PROGRAMS)
-am__bench_bench_safecrex_SOURCES_DIST =  \
-	bench/bench_safecrex.cpp bench/bench.cpp bench/bench.h \
-	bench/Examples.cpp
+am__bench_bench_safecrex_SOURCES_DIST = bench/bench_safecrex.cpp \
+	bench/bench.cpp bench/bench.h bench/Examples.cpp
 @ENABLE_BENCH_TRUE@am_bench_bench_safecrex_OBJECTS = bench/bench_bench_safecrex-bench_safecrex.$(OBJEXT) \
 @ENABLE_BENCH_TRUE@	bench/bench_bench_safecrex-bench.$(OBJEXT) \
 @ENABLE_BENCH_TRUE@	bench/bench_bench_safecrex-Examples.$(OBJEXT)
-bench_bench_safecrex_OBJECTS =  \
-	$(am_bench_bench_safecrex_OBJECTS)
+bench_bench_safecrex_OBJECTS = $(am_bench_bench_safecrex_OBJECTS)
 am__DEPENDENCIES_1 = $(am__append_14)
 am__DEPENDENCIES_2 = $(am__append_15)
 am__DEPENDENCIES_3 =
@@ -1032,74 +1030,26 @@ bench_bench_safecrex_LINK = $(LIBTOOL) $(AM_V_lt) --tag=CXX \
 	$(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=link $(CXXLD) \
 	$(bench_bench_safecrex_CXXFLAGS) $(CXXFLAGS) \
 	$(bench_bench_safecrex_LDFLAGS) $(LDFLAGS) -o $@
-am__safecrex_cli_SOURCES_DIST = safecrex-cli.cpp \
-	safecrex-cli-res.rc
-@TARGET_WINDOWS_TRUE@am__objects_13 = safecrex-cli-res.$(OBJEXT)
-am_safecrex_cli_OBJECTS =  \
-	safecrex_cli-safecrex-cli.$(OBJEXT) \
-	$(am__objects_13)
-safecrex_cli_OBJECTS = $(am_safecrex_cli_OBJECTS)
-safecrex_cli_DEPENDENCIES = $(LIBBITCOIN_CLI) \
-	$(am__DEPENDENCIES_4) $(LIBBITCOIN_UTIL) $(am__DEPENDENCIES_3) \
-	$(am__DEPENDENCIES_3) $(am__DEPENDENCIES_3) \
-	$(am__DEPENDENCIES_3)
-safecrex_cli_LINK = $(LIBTOOL) $(AM_V_lt) --tag=CXX \
-	$(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=link $(CXXLD) \
-	$(safecrex_cli_CXXFLAGS) $(CXXFLAGS) \
-	$(safecrex_cli_LDFLAGS) $(LDFLAGS) -o $@
-am__safecrex_tx_SOURCES_DIST = safecrex-tx.cpp \
-	safecrex-tx-res.rc
-@TARGET_WINDOWS_TRUE@am__objects_14 = safecrex-tx-res.$(OBJEXT)
-am_safecrex_tx_OBJECTS =  \
-	safecrex_tx-safecrex-tx.$(OBJEXT) $(am__objects_14)
-safecrex_tx_OBJECTS = $(am_safecrex_tx_OBJECTS)
-safecrex_tx_DEPENDENCIES = $(am__DEPENDENCIES_4) \
-	$(LIBBITCOIN_COMMON) $(LIBBITCOIN_UTIL) $(LIBBITCOIN_CRYPTO) \
-	$(LIBSECP256K1) $(am__DEPENDENCIES_3) $(am__DEPENDENCIES_3)
-safecrex_tx_LINK = $(LIBTOOL) $(AM_V_lt) --tag=CXX \
-	$(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=link $(CXXLD) \
-	$(safecrex_tx_CXXFLAGS) $(CXXFLAGS) \
-	$(safecrex_tx_LDFLAGS) $(LDFLAGS) -o $@
-am__safecrexd_SOURCES_DIST = safecrexd.cpp \
-	safecrexd-res.rc
-@TARGET_WINDOWS_TRUE@am__objects_15 = safecrexd-res.$(OBJEXT)
-am_safecrexd_OBJECTS = safecrexd-safecrexd.$(OBJEXT) \
-	$(am__objects_15)
-safecrexd_OBJECTS = $(am_safecrexd_OBJECTS)
-@ENABLE_ZMQ_TRUE@am__DEPENDENCIES_6 = $(LIBBITCOIN_ZMQ) \
-@ENABLE_ZMQ_TRUE@	$(am__DEPENDENCIES_3)
-safecrexd_DEPENDENCIES = $(LIBBITCOIN_SERVER) \
-	$(LIBBITCOIN_COMMON) $(am__DEPENDENCIES_4) $(LIBBITCOIN_UTIL) \
-	$(LIBBITCOIN_CRYPTO) $(am__DEPENDENCIES_1) \
-	$(am__DEPENDENCIES_2) $(LIBSECP256K1) $(am__DEPENDENCIES_6) \
-	$(am__append_9) $(am__DEPENDENCIES_3) $(am__DEPENDENCIES_3) \
-	$(am__DEPENDENCIES_3) $(am__DEPENDENCIES_3) \
-	$(am__DEPENDENCIES_3) $(am__DEPENDENCIES_3) \
-	$(am__DEPENDENCIES_3)
-safecrexd_LINK = $(LIBTOOL) $(AM_V_lt) --tag=CXX \
-	$(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=link $(CXXLD) \
-	$(safecrexd_CXXFLAGS) $(CXXFLAGS) \
-	$(safecrexd_LDFLAGS) $(LDFLAGS) -o $@
 am__qt_safecrex_qt_SOURCES_DIST = qt/safecrex.cpp \
 	qt/macdockiconhandler.mm qt/macnotificationhandler.mm \
 	qt/res/safecrex-qt-res.rc
-@ENABLE_QT_TRUE@am__objects_16 = qt/qt_safecrex_qt-macdockiconhandler.$(OBJEXT) \
+@ENABLE_QT_TRUE@am__objects_13 = qt/qt_safecrex_qt-macdockiconhandler.$(OBJEXT) \
 @ENABLE_QT_TRUE@	qt/qt_safecrex_qt-macnotificationhandler.$(OBJEXT)
-@ENABLE_QT_TRUE@@TARGET_DARWIN_TRUE@am__objects_17 =  \
-@ENABLE_QT_TRUE@@TARGET_DARWIN_TRUE@	$(am__objects_16)
-@ENABLE_QT_TRUE@am__objects_18 =  \
-@ENABLE_QT_TRUE@	qt/res/safecrex-qt-res.$(OBJEXT)
-@ENABLE_QT_TRUE@@TARGET_WINDOWS_TRUE@am__objects_19 =  \
-@ENABLE_QT_TRUE@@TARGET_WINDOWS_TRUE@	$(am__objects_18)
-@ENABLE_QT_TRUE@am_qt_safecrex_qt_OBJECTS = qt/qt_safecrex_qt-safecrex.$(OBJEXT) \
-@ENABLE_QT_TRUE@	$(am__objects_17) $(am__objects_19)
+@ENABLE_QT_TRUE@@TARGET_DARWIN_TRUE@am__objects_14 =  \
+@ENABLE_QT_TRUE@@TARGET_DARWIN_TRUE@	$(am__objects_13)
+@ENABLE_QT_TRUE@am__objects_15 = qt/res/safecrex-qt-res.$(OBJEXT)
+@ENABLE_QT_TRUE@@TARGET_WINDOWS_TRUE@am__objects_16 =  \
+@ENABLE_QT_TRUE@@TARGET_WINDOWS_TRUE@	$(am__objects_15)
+@ENABLE_QT_TRUE@am_qt_safecrex_qt_OBJECTS =  \
+@ENABLE_QT_TRUE@	qt/qt_safecrex_qt-safecrex.$(OBJEXT) \
+@ENABLE_QT_TRUE@	$(am__objects_14) $(am__objects_16)
 qt_safecrex_qt_OBJECTS = $(am_qt_safecrex_qt_OBJECTS)
-@ENABLE_QT_TRUE@@ENABLE_ZMQ_TRUE@am__DEPENDENCIES_7 =  \
+@ENABLE_QT_TRUE@@ENABLE_ZMQ_TRUE@am__DEPENDENCIES_6 =  \
 @ENABLE_QT_TRUE@@ENABLE_ZMQ_TRUE@	$(LIBBITCOIN_ZMQ) \
 @ENABLE_QT_TRUE@@ENABLE_ZMQ_TRUE@	$(am__DEPENDENCIES_3)
 @ENABLE_QT_TRUE@qt_safecrex_qt_DEPENDENCIES = qt/libbitcoinqt.a \
 @ENABLE_QT_TRUE@	$(LIBBITCOIN_SERVER) $(am__append_38) \
-@ENABLE_QT_TRUE@	$(am__DEPENDENCIES_7) $(LIBBITCOIN_CLI) \
+@ENABLE_QT_TRUE@	$(am__DEPENDENCIES_6) $(LIBBITCOIN_CLI) \
 @ENABLE_QT_TRUE@	$(LIBBITCOIN_COMMON) $(LIBBITCOIN_UTIL) \
 @ENABLE_QT_TRUE@	$(LIBBITCOIN_CRYPTO) $(am__DEPENDENCIES_4) \
 @ENABLE_QT_TRUE@	$(am__DEPENDENCIES_1) $(am__DEPENDENCIES_2) \
@@ -1110,37 +1060,37 @@ qt_safecrex_qt_OBJECTS = $(am_qt_safecrex_qt_OBJECTS)
 @ENABLE_QT_TRUE@	$(am__DEPENDENCIES_3) $(LIBSECP256K1) \
 @ENABLE_QT_TRUE@	$(am__DEPENDENCIES_3) $(am__DEPENDENCIES_3)
 qt_safecrex_qt_LINK = $(LIBTOOL) $(AM_V_lt) \
-	$(qt_safecrex_qt_LIBTOOLFLAGS) $(LIBTOOLFLAGS) \
-	--mode=link $(OBJCXXLD) $(AM_OBJCXXFLAGS) $(OBJCXXFLAGS) \
+	$(qt_safecrex_qt_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=link \
+	$(OBJCXXLD) $(AM_OBJCXXFLAGS) $(OBJCXXFLAGS) \
 	$(qt_safecrex_qt_LDFLAGS) $(LDFLAGS) -o $@
-am__qt_test_test_safecrex_qt_SOURCES_DIST =  \
-	qt/test/compattests.cpp qt/test/test_main.cpp \
-	qt/test/uritests.cpp qt/test/trafficgraphdatatests.cpp \
-	qt/test/compattests.h qt/test/uritests.h \
-	qt/test/paymentrequestdata.h qt/test/paymentservertests.h \
-	qt/test/trafficgraphdatatests.h qt/test/paymentservertests.cpp
-@ENABLE_QT_TESTS_TRUE@@ENABLE_WALLET_TRUE@am__objects_20 = qt/test/qt_test_test_safecrex_qt-paymentservertests.$(OBJEXT)
+am__qt_test_test_safecrex_qt_SOURCES_DIST = qt/test/compattests.cpp \
+	qt/test/test_main.cpp qt/test/uritests.cpp \
+	qt/test/trafficgraphdatatests.cpp qt/test/compattests.h \
+	qt/test/uritests.h qt/test/paymentrequestdata.h \
+	qt/test/paymentservertests.h qt/test/trafficgraphdatatests.h \
+	qt/test/paymentservertests.cpp
+@ENABLE_QT_TESTS_TRUE@@ENABLE_WALLET_TRUE@am__objects_17 = qt/test/qt_test_test_safecrex_qt-paymentservertests.$(OBJEXT)
 @ENABLE_QT_TESTS_TRUE@am_qt_test_test_safecrex_qt_OBJECTS = qt/test/qt_test_test_safecrex_qt-compattests.$(OBJEXT) \
 @ENABLE_QT_TESTS_TRUE@	qt/test/qt_test_test_safecrex_qt-test_main.$(OBJEXT) \
 @ENABLE_QT_TESTS_TRUE@	qt/test/qt_test_test_safecrex_qt-uritests.$(OBJEXT) \
 @ENABLE_QT_TESTS_TRUE@	qt/test/qt_test_test_safecrex_qt-trafficgraphdatatests.$(OBJEXT) \
-@ENABLE_QT_TESTS_TRUE@	$(am__objects_3) $(am__objects_20)
-@ENABLE_QT_TESTS_TRUE@@ENABLE_WALLET_TRUE@am__objects_21 = qt/test/qt_test_test_safecrex_qt-moc_paymentservertests.$(OBJEXT)
-@ENABLE_QT_TESTS_TRUE@am__objects_22 = qt/test/qt_test_test_safecrex_qt-moc_compattests.$(OBJEXT) \
+@ENABLE_QT_TESTS_TRUE@	$(am__objects_3) $(am__objects_17)
+@ENABLE_QT_TESTS_TRUE@@ENABLE_WALLET_TRUE@am__objects_18 = qt/test/qt_test_test_safecrex_qt-moc_paymentservertests.$(OBJEXT)
+@ENABLE_QT_TESTS_TRUE@am__objects_19 = qt/test/qt_test_test_safecrex_qt-moc_compattests.$(OBJEXT) \
 @ENABLE_QT_TESTS_TRUE@	qt/test/qt_test_test_safecrex_qt-moc_trafficgraphdatatests.$(OBJEXT) \
 @ENABLE_QT_TESTS_TRUE@	qt/test/qt_test_test_safecrex_qt-moc_uritests.$(OBJEXT) \
-@ENABLE_QT_TESTS_TRUE@	$(am__objects_21)
+@ENABLE_QT_TESTS_TRUE@	$(am__objects_18)
 @ENABLE_QT_TESTS_TRUE@nodist_qt_test_test_safecrex_qt_OBJECTS =  \
-@ENABLE_QT_TESTS_TRUE@	$(am__objects_22)
+@ENABLE_QT_TESTS_TRUE@	$(am__objects_19)
 qt_test_test_safecrex_qt_OBJECTS =  \
 	$(am_qt_test_test_safecrex_qt_OBJECTS) \
 	$(nodist_qt_test_test_safecrex_qt_OBJECTS)
-@ENABLE_QT_TESTS_TRUE@@ENABLE_ZMQ_TRUE@am__DEPENDENCIES_8 =  \
+@ENABLE_QT_TESTS_TRUE@@ENABLE_ZMQ_TRUE@am__DEPENDENCIES_7 =  \
 @ENABLE_QT_TESTS_TRUE@@ENABLE_ZMQ_TRUE@	$(LIBBITCOIN_ZMQ) \
 @ENABLE_QT_TESTS_TRUE@@ENABLE_ZMQ_TRUE@	$(am__DEPENDENCIES_3)
 @ENABLE_QT_TESTS_TRUE@qt_test_test_safecrex_qt_DEPENDENCIES =  \
 @ENABLE_QT_TESTS_TRUE@	$(LIBBITCOINQT) $(LIBBITCOIN_SERVER) \
-@ENABLE_QT_TESTS_TRUE@	$(am__append_45) $(am__DEPENDENCIES_8) \
+@ENABLE_QT_TESTS_TRUE@	$(am__append_45) $(am__DEPENDENCIES_7) \
 @ENABLE_QT_TESTS_TRUE@	$(LIBBITCOIN_CLI) $(LIBBITCOIN_COMMON) \
 @ENABLE_QT_TESTS_TRUE@	$(LIBBITCOIN_UTIL) $(LIBBITCOIN_CRYPTO) \
 @ENABLE_QT_TESTS_TRUE@	$(am__DEPENDENCIES_4) \
@@ -1162,9 +1112,46 @@ qt_test_test_safecrex_qt_LINK = $(LIBTOOL) $(AM_V_lt) --tag=CXX \
 	$(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=link $(CXXLD) \
 	$(qt_test_test_safecrex_qt_CXXFLAGS) $(CXXFLAGS) \
 	$(qt_test_test_safecrex_qt_LDFLAGS) $(LDFLAGS) -o $@
-am__test_test_safecrex_SOURCES_DIST =  \
-	test/arith_uint256_tests.cpp test/scriptnum10.h \
-	test/addrman_tests.cpp test/alert_tests.cpp \
+am__safecrex_cli_SOURCES_DIST = safecrex-cli.cpp safecrex-cli-res.rc
+@TARGET_WINDOWS_TRUE@am__objects_20 = safecrex-cli-res.$(OBJEXT)
+am_safecrex_cli_OBJECTS = safecrex_cli-safecrex-cli.$(OBJEXT) \
+	$(am__objects_20)
+safecrex_cli_OBJECTS = $(am_safecrex_cli_OBJECTS)
+safecrex_cli_DEPENDENCIES = $(LIBBITCOIN_CLI) $(am__DEPENDENCIES_4) \
+	$(LIBBITCOIN_UTIL) $(am__DEPENDENCIES_3) $(am__DEPENDENCIES_3) \
+	$(am__DEPENDENCIES_3) $(am__DEPENDENCIES_3)
+safecrex_cli_LINK = $(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) \
+	$(LIBTOOLFLAGS) --mode=link $(CXXLD) $(safecrex_cli_CXXFLAGS) \
+	$(CXXFLAGS) $(safecrex_cli_LDFLAGS) $(LDFLAGS) -o $@
+am__safecrex_tx_SOURCES_DIST = safecrex-tx.cpp safecrex-tx-res.rc
+@TARGET_WINDOWS_TRUE@am__objects_21 = safecrex-tx-res.$(OBJEXT)
+am_safecrex_tx_OBJECTS = safecrex_tx-safecrex-tx.$(OBJEXT) \
+	$(am__objects_21)
+safecrex_tx_OBJECTS = $(am_safecrex_tx_OBJECTS)
+safecrex_tx_DEPENDENCIES = $(am__DEPENDENCIES_4) $(LIBBITCOIN_COMMON) \
+	$(LIBBITCOIN_UTIL) $(LIBBITCOIN_CRYPTO) $(LIBSECP256K1) \
+	$(am__DEPENDENCIES_3) $(am__DEPENDENCIES_3)
+safecrex_tx_LINK = $(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) \
+	$(LIBTOOLFLAGS) --mode=link $(CXXLD) $(safecrex_tx_CXXFLAGS) \
+	$(CXXFLAGS) $(safecrex_tx_LDFLAGS) $(LDFLAGS) -o $@
+am__safecrexd_SOURCES_DIST = safecrexd.cpp safecrexd-res.rc
+@TARGET_WINDOWS_TRUE@am__objects_22 = safecrexd-res.$(OBJEXT)
+am_safecrexd_OBJECTS = safecrexd-safecrexd.$(OBJEXT) $(am__objects_22)
+safecrexd_OBJECTS = $(am_safecrexd_OBJECTS)
+@ENABLE_ZMQ_TRUE@am__DEPENDENCIES_8 = $(LIBBITCOIN_ZMQ) \
+@ENABLE_ZMQ_TRUE@	$(am__DEPENDENCIES_3)
+safecrexd_DEPENDENCIES = $(LIBBITCOIN_SERVER) $(LIBBITCOIN_COMMON) \
+	$(am__DEPENDENCIES_4) $(LIBBITCOIN_UTIL) $(LIBBITCOIN_CRYPTO) \
+	$(am__DEPENDENCIES_1) $(am__DEPENDENCIES_2) $(LIBSECP256K1) \
+	$(am__DEPENDENCIES_8) $(am__append_9) $(am__DEPENDENCIES_3) \
+	$(am__DEPENDENCIES_3) $(am__DEPENDENCIES_3) \
+	$(am__DEPENDENCIES_3) $(am__DEPENDENCIES_3) \
+	$(am__DEPENDENCIES_3) $(am__DEPENDENCIES_3)
+safecrexd_LINK = $(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) \
+	$(LIBTOOLFLAGS) --mode=link $(CXXLD) $(safecrexd_CXXFLAGS) \
+	$(CXXFLAGS) $(safecrexd_LDFLAGS) $(LDFLAGS) -o $@
+am__test_test_safecrex_SOURCES_DIST = test/arith_uint256_tests.cpp \
+	test/scriptnum10.h test/addrman_tests.cpp test/alert_tests.cpp \
 	test/allocator_tests.cpp test/base32_tests.cpp \
 	test/base58_tests.cpp test/base64_tests.cpp \
 	test/bip32_tests.cpp test/bip39_tests.cpp test/bloom_tests.cpp \
@@ -1260,17 +1247,14 @@ am__test_test_safecrex_SOURCES_DIST =  \
 @ENABLE_TESTS_TRUE@	test/test_test_safecrex-univalue_tests.$(OBJEXT) \
 @ENABLE_TESTS_TRUE@	test/test_test_safecrex-util_tests.$(OBJEXT) \
 @ENABLE_TESTS_TRUE@	$(am__objects_23)
-@ENABLE_TESTS_TRUE@am_test_test_safecrex_OBJECTS =  \
-@ENABLE_TESTS_TRUE@	$(am__objects_24) $(am__objects_3) \
-@ENABLE_TESTS_TRUE@	$(am__objects_3)
+@ENABLE_TESTS_TRUE@am_test_test_safecrex_OBJECTS = $(am__objects_24) \
+@ENABLE_TESTS_TRUE@	$(am__objects_3) $(am__objects_3)
 @ENABLE_TESTS_TRUE@am__objects_25 = $(am__objects_3) $(am__objects_3)
 @ENABLE_TESTS_TRUE@nodist_test_test_safecrex_OBJECTS =  \
 @ENABLE_TESTS_TRUE@	$(am__objects_25)
-test_test_safecrex_OBJECTS =  \
-	$(am_test_test_safecrex_OBJECTS) \
+test_test_safecrex_OBJECTS = $(am_test_test_safecrex_OBJECTS) \
 	$(nodist_test_test_safecrex_OBJECTS)
-@BUILD_BITCOIN_LIBS_TRUE@am__DEPENDENCIES_9 =  \
-@BUILD_BITCOIN_LIBS_TRUE@	libsafecrexconsensus.la
+@BUILD_BITCOIN_LIBS_TRUE@am__DEPENDENCIES_9 = libsafecrexconsensus.la
 @ENABLE_TESTS_TRUE@@ENABLE_ZMQ_TRUE@am__DEPENDENCIES_10 =  \
 @ENABLE_TESTS_TRUE@@ENABLE_ZMQ_TRUE@	$(am__DEPENDENCIES_3)
 @ENABLE_TESTS_TRUE@test_test_safecrex_DEPENDENCIES =  \
@@ -1368,12 +1352,11 @@ SOURCES = $(crypto_libbitcoin_crypto_a_SOURCES) \
 	$(qt_libbitcoinqt_a_SOURCES) \
 	$(nodist_qt_libbitcoinqt_a_SOURCES) \
 	$(libsafecrexconsensus_la_SOURCES) \
-	$(bench_bench_safecrex_SOURCES) \
-	$(safecrex_cli_SOURCES) $(safecrex_tx_SOURCES) \
-	$(safecrexd_SOURCES) $(qt_safecrex_qt_SOURCES) \
+	$(bench_bench_safecrex_SOURCES) $(qt_safecrex_qt_SOURCES) \
 	$(qt_test_test_safecrex_qt_SOURCES) \
 	$(nodist_qt_test_test_safecrex_qt_SOURCES) \
-	$(test_test_safecrex_SOURCES) \
+	$(safecrex_cli_SOURCES) $(safecrex_tx_SOURCES) \
+	$(safecrexd_SOURCES) $(test_test_safecrex_SOURCES) \
 	$(nodist_test_test_safecrex_SOURCES)
 DIST_SOURCES = $(crypto_libbitcoin_crypto_a_SOURCES) \
 	$(am__leveldb_libleveldb_a_SOURCES_DIST) \
@@ -1386,11 +1369,10 @@ DIST_SOURCES = $(crypto_libbitcoin_crypto_a_SOURCES) \
 	$(am__qt_libbitcoinqt_a_SOURCES_DIST) \
 	$(am__libsafecrexconsensus_la_SOURCES_DIST) \
 	$(am__bench_bench_safecrex_SOURCES_DIST) \
-	$(am__safecrex_cli_SOURCES_DIST) \
-	$(am__safecrex_tx_SOURCES_DIST) \
-	$(am__safecrexd_SOURCES_DIST) \
 	$(am__qt_safecrex_qt_SOURCES_DIST) \
 	$(am__qt_test_test_safecrex_qt_SOURCES_DIST) \
+	$(am__safecrex_cli_SOURCES_DIST) \
+	$(am__safecrex_tx_SOURCES_DIST) $(am__safecrexd_SOURCES_DIST) \
 	$(am__test_test_safecrex_SOURCES_DIST)
 RECURSIVE_TARGETS = all-recursive check-recursive cscopelist-recursive \
 	ctags-recursive dvi-recursive html-recursive info-recursive \
@@ -2372,8 +2354,7 @@ EXTRA_DIST = leveldb $(am__append_23)
 @ENABLE_TESTS_TRUE@	test/sigopcount_tests.cpp \
 @ENABLE_TESTS_TRUE@	test/skiplist_tests.cpp \
 @ENABLE_TESTS_TRUE@	test/streams_tests.cpp \
-@ENABLE_TESTS_TRUE@	test/test_safecrex.cpp \
-@ENABLE_TESTS_TRUE@	test/test_safecrex.h \
+@ENABLE_TESTS_TRUE@	test/test_safecrex.cpp test/test_safecrex.h \
 @ENABLE_TESTS_TRUE@	test/timedata_tests.cpp \
 @ENABLE_TESTS_TRUE@	test/transaction_tests.cpp \
 @ENABLE_TESTS_TRUE@	test/txvalidationcache_tests.cpp \
@@ -2383,11 +2364,11 @@ EXTRA_DIST = leveldb $(am__append_23)
 @ENABLE_TESTS_TRUE@	$(am__append_24)
 @ENABLE_TESTS_TRUE@test_test_safecrex_SOURCES = $(BITCOIN_TESTS) $(JSON_TEST_FILES) $(RAW_TEST_FILES)
 @ENABLE_TESTS_TRUE@test_test_safecrex_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES) -I$(builddir)/test/ $(TESTDEFS) $(EVENT_CFLAGS)
-@ENABLE_TESTS_TRUE@test_test_safecrex_LDADD =  \
-@ENABLE_TESTS_TRUE@	$(LIBBITCOIN_SERVER) $(LIBBITCOIN_CLI) \
-@ENABLE_TESTS_TRUE@	$(LIBBITCOIN_COMMON) $(LIBBITCOIN_UTIL) \
-@ENABLE_TESTS_TRUE@	$(LIBBITCOIN_CRYPTO) $(LIBUNIVALUE) \
-@ENABLE_TESTS_TRUE@	$(LIBLEVELDB) $(LIBMEMENV) $(BOOST_LIBS) \
+@ENABLE_TESTS_TRUE@test_test_safecrex_LDADD = $(LIBBITCOIN_SERVER) \
+@ENABLE_TESTS_TRUE@	$(LIBBITCOIN_CLI) $(LIBBITCOIN_COMMON) \
+@ENABLE_TESTS_TRUE@	$(LIBBITCOIN_UTIL) $(LIBBITCOIN_CRYPTO) \
+@ENABLE_TESTS_TRUE@	$(LIBUNIVALUE) $(LIBLEVELDB) $(LIBMEMENV) \
+@ENABLE_TESTS_TRUE@	$(BOOST_LIBS) \
 @ENABLE_TESTS_TRUE@	$(BOOST_UNIT_TEST_FRAMEWORK_LIB) \
 @ENABLE_TESTS_TRUE@	$(LIBSECP256K1) $(am__append_25) \
 @ENABLE_TESTS_TRUE@	$(LIBBITCOIN_CONSENSUS) $(BDB_LIBS) \
@@ -2408,15 +2389,14 @@ EXTRA_DIST = leveldb $(am__append_23)
 
 @ENABLE_BENCH_TRUE@bench_bench_safecrex_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES) $(EVENT_CLFAGS) $(EVENT_PTHREADS_CFLAGS) -I$(builddir)/bench/
 @ENABLE_BENCH_TRUE@bench_bench_safecrex_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
-@ENABLE_BENCH_TRUE@bench_bench_safecrex_LDADD =  \
-@ENABLE_BENCH_TRUE@	$(LIBBITCOIN_SERVER) $(LIBBITCOIN_COMMON) \
-@ENABLE_BENCH_TRUE@	$(LIBBITCOIN_UTIL) $(LIBBITCOIN_CRYPTO) \
-@ENABLE_BENCH_TRUE@	$(LIBLEVELDB) $(LIBMEMENV) $(LIBSECP256K1) \
-@ENABLE_BENCH_TRUE@	$(LIBUNIVALUE) $(am__append_29) \
-@ENABLE_BENCH_TRUE@	$(am__append_30) $(BOOST_LIBS) $(BDB_LIBS) \
-@ENABLE_BENCH_TRUE@	$(SSL_LIBS) $(CRYPTO_LIBS) \
-@ENABLE_BENCH_TRUE@	$(MINIUPNPC_LIBS) $(EVENT_PTHREADS_LIBS) \
-@ENABLE_BENCH_TRUE@	$(EVENT_LIBS)
+@ENABLE_BENCH_TRUE@bench_bench_safecrex_LDADD = $(LIBBITCOIN_SERVER) \
+@ENABLE_BENCH_TRUE@	$(LIBBITCOIN_COMMON) $(LIBBITCOIN_UTIL) \
+@ENABLE_BENCH_TRUE@	$(LIBBITCOIN_CRYPTO) $(LIBLEVELDB) \
+@ENABLE_BENCH_TRUE@	$(LIBMEMENV) $(LIBSECP256K1) $(LIBUNIVALUE) \
+@ENABLE_BENCH_TRUE@	$(am__append_29) $(am__append_30) \
+@ENABLE_BENCH_TRUE@	$(BOOST_LIBS) $(BDB_LIBS) $(SSL_LIBS) \
+@ENABLE_BENCH_TRUE@	$(CRYPTO_LIBS) $(MINIUPNPC_LIBS) \
+@ENABLE_BENCH_TRUE@	$(EVENT_PTHREADS_LIBS) $(EVENT_LIBS)
 @ENABLE_BENCH_TRUE@bench_bench_safecrex_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
 @ENABLE_BENCH_TRUE@CLEAN_BITCOIN_BENCH = bench/*.gcda bench/*.gcno
 
@@ -3620,10 +3600,10 @@ clean-libLTLIBRARIES:
 	  echo rm -f $${locs}; \
 	  rm -f $${locs}; \
 	}
-crypto/libsafecrexconsensus_la-hmac_sha512.lo:  \
-	crypto/$(am__dirstamp) crypto/$(DEPDIR)/$(am__dirstamp)
-crypto/libsafecrexconsensus_la-ripemd160.lo:  \
-	crypto/$(am__dirstamp) crypto/$(DEPDIR)/$(am__dirstamp)
+crypto/libsafecrexconsensus_la-hmac_sha512.lo: crypto/$(am__dirstamp) \
+	crypto/$(DEPDIR)/$(am__dirstamp)
+crypto/libsafecrexconsensus_la-ripemd160.lo: crypto/$(am__dirstamp) \
+	crypto/$(DEPDIR)/$(am__dirstamp)
 crypto/libsafecrexconsensus_la-sha1.lo: crypto/$(am__dirstamp) \
 	crypto/$(DEPDIR)/$(am__dirstamp)
 crypto/libsafecrexconsensus_la-sha256.lo: crypto/$(am__dirstamp) \
@@ -3635,8 +3615,8 @@ primitives/libsafecrexconsensus_la-transaction.lo:  \
 	primitives/$(DEPDIR)/$(am__dirstamp)
 script/libsafecrexconsensus_la-safecrexconsensus.lo:  \
 	script/$(am__dirstamp) script/$(DEPDIR)/$(am__dirstamp)
-script/libsafecrexconsensus_la-interpreter.lo:  \
-	script/$(am__dirstamp) script/$(DEPDIR)/$(am__dirstamp)
+script/libsafecrexconsensus_la-interpreter.lo: script/$(am__dirstamp) \
+	script/$(DEPDIR)/$(am__dirstamp)
 script/libsafecrexconsensus_la-script.lo: script/$(am__dirstamp) \
 	script/$(DEPDIR)/$(am__dirstamp)
 compat/libsafecrexconsensus_la-glibc_compat.lo:  \
@@ -3701,30 +3681,18 @@ bench/$(DEPDIR)/$(am__dirstamp):
 	@: > bench/$(DEPDIR)/$(am__dirstamp)
 bench/bench_bench_safecrex-bench_safecrex.$(OBJEXT):  \
 	bench/$(am__dirstamp) bench/$(DEPDIR)/$(am__dirstamp)
-bench/bench_bench_safecrex-bench.$(OBJEXT):  \
-	bench/$(am__dirstamp) bench/$(DEPDIR)/$(am__dirstamp)
-bench/bench_bench_safecrex-Examples.$(OBJEXT):  \
-	bench/$(am__dirstamp) bench/$(DEPDIR)/$(am__dirstamp)
+bench/bench_bench_safecrex-bench.$(OBJEXT): bench/$(am__dirstamp) \
+	bench/$(DEPDIR)/$(am__dirstamp)
+bench/bench_bench_safecrex-Examples.$(OBJEXT): bench/$(am__dirstamp) \
+	bench/$(DEPDIR)/$(am__dirstamp)
 
 bench/bench_safecrex$(EXEEXT): $(bench_bench_safecrex_OBJECTS) $(bench_bench_safecrex_DEPENDENCIES) $(EXTRA_bench_bench_safecrex_DEPENDENCIES) bench/$(am__dirstamp)
 	@rm -f bench/bench_safecrex$(EXEEXT)
 	$(AM_V_CXXLD)$(bench_bench_safecrex_LINK) $(bench_bench_safecrex_OBJECTS) $(bench_bench_safecrex_LDADD) $(LIBS)
-
-safecrex-cli$(EXEEXT): $(safecrex_cli_OBJECTS) $(safecrex_cli_DEPENDENCIES) $(EXTRA_safecrex_cli_DEPENDENCIES) 
-	@rm -f safecrex-cli$(EXEEXT)
-	$(AM_V_CXXLD)$(safecrex_cli_LINK) $(safecrex_cli_OBJECTS) $(safecrex_cli_LDADD) $(LIBS)
-
-safecrex-tx$(EXEEXT): $(safecrex_tx_OBJECTS) $(safecrex_tx_DEPENDENCIES) $(EXTRA_safecrex_tx_DEPENDENCIES) 
-	@rm -f safecrex-tx$(EXEEXT)
-	$(AM_V_CXXLD)$(safecrex_tx_LINK) $(safecrex_tx_OBJECTS) $(safecrex_tx_LDADD) $(LIBS)
-
-safecrexd$(EXEEXT): $(safecrexd_OBJECTS) $(safecrexd_DEPENDENCIES) $(EXTRA_safecrexd_DEPENDENCIES) 
-	@rm -f safecrexd$(EXEEXT)
-	$(AM_V_CXXLD)$(safecrexd_LINK) $(safecrexd_OBJECTS) $(safecrexd_LDADD) $(LIBS)
 qt/qt_safecrex_qt-safecrex.$(OBJEXT): qt/$(am__dirstamp) \
 	qt/$(DEPDIR)/$(am__dirstamp)
-qt/qt_safecrex_qt-macdockiconhandler.$(OBJEXT):  \
-	qt/$(am__dirstamp) qt/$(DEPDIR)/$(am__dirstamp)
+qt/qt_safecrex_qt-macdockiconhandler.$(OBJEXT): qt/$(am__dirstamp) \
+	qt/$(DEPDIR)/$(am__dirstamp)
 qt/qt_safecrex_qt-macnotificationhandler.$(OBJEXT):  \
 	qt/$(am__dirstamp) qt/$(DEPDIR)/$(am__dirstamp)
 qt/res/$(am__dirstamp):
@@ -3767,6 +3735,18 @@ qt/test/qt_test_test_safecrex_qt-moc_paymentservertests.$(OBJEXT):  \
 qt/test/test_safecrex-qt$(EXEEXT): $(qt_test_test_safecrex_qt_OBJECTS) $(qt_test_test_safecrex_qt_DEPENDENCIES) $(EXTRA_qt_test_test_safecrex_qt_DEPENDENCIES) qt/test/$(am__dirstamp)
 	@rm -f qt/test/test_safecrex-qt$(EXEEXT)
 	$(AM_V_CXXLD)$(qt_test_test_safecrex_qt_LINK) $(qt_test_test_safecrex_qt_OBJECTS) $(qt_test_test_safecrex_qt_LDADD) $(LIBS)
+
+safecrex-cli$(EXEEXT): $(safecrex_cli_OBJECTS) $(safecrex_cli_DEPENDENCIES) $(EXTRA_safecrex_cli_DEPENDENCIES) 
+	@rm -f safecrex-cli$(EXEEXT)
+	$(AM_V_CXXLD)$(safecrex_cli_LINK) $(safecrex_cli_OBJECTS) $(safecrex_cli_LDADD) $(LIBS)
+
+safecrex-tx$(EXEEXT): $(safecrex_tx_OBJECTS) $(safecrex_tx_DEPENDENCIES) $(EXTRA_safecrex_tx_DEPENDENCIES) 
+	@rm -f safecrex-tx$(EXEEXT)
+	$(AM_V_CXXLD)$(safecrex_tx_LINK) $(safecrex_tx_OBJECTS) $(safecrex_tx_LDADD) $(LIBS)
+
+safecrexd$(EXEEXT): $(safecrexd_OBJECTS) $(safecrexd_DEPENDENCIES) $(EXTRA_safecrexd_DEPENDENCIES) 
+	@rm -f safecrexd$(EXEEXT)
+	$(AM_V_CXXLD)$(safecrexd_LINK) $(safecrexd_OBJECTS) $(safecrexd_LDADD) $(LIBS)
 test/$(am__dirstamp):
 	@$(MKDIR_P) test
 	@: > test/$(am__dirstamp)
@@ -3775,104 +3755,104 @@ test/$(DEPDIR)/$(am__dirstamp):
 	@: > test/$(DEPDIR)/$(am__dirstamp)
 test/test_test_safecrex-arith_uint256_tests.$(OBJEXT):  \
 	test/$(am__dirstamp) test/$(DEPDIR)/$(am__dirstamp)
-test/test_test_safecrex-addrman_tests.$(OBJEXT):  \
-	test/$(am__dirstamp) test/$(DEPDIR)/$(am__dirstamp)
-test/test_test_safecrex-alert_tests.$(OBJEXT):  \
-	test/$(am__dirstamp) test/$(DEPDIR)/$(am__dirstamp)
+test/test_test_safecrex-addrman_tests.$(OBJEXT): test/$(am__dirstamp) \
+	test/$(DEPDIR)/$(am__dirstamp)
+test/test_test_safecrex-alert_tests.$(OBJEXT): test/$(am__dirstamp) \
+	test/$(DEPDIR)/$(am__dirstamp)
 test/test_test_safecrex-allocator_tests.$(OBJEXT):  \
 	test/$(am__dirstamp) test/$(DEPDIR)/$(am__dirstamp)
-test/test_test_safecrex-base32_tests.$(OBJEXT):  \
-	test/$(am__dirstamp) test/$(DEPDIR)/$(am__dirstamp)
-test/test_test_safecrex-base58_tests.$(OBJEXT):  \
-	test/$(am__dirstamp) test/$(DEPDIR)/$(am__dirstamp)
-test/test_test_safecrex-base64_tests.$(OBJEXT):  \
-	test/$(am__dirstamp) test/$(DEPDIR)/$(am__dirstamp)
-test/test_test_safecrex-bip32_tests.$(OBJEXT):  \
-	test/$(am__dirstamp) test/$(DEPDIR)/$(am__dirstamp)
-test/test_test_safecrex-bip39_tests.$(OBJEXT):  \
-	test/$(am__dirstamp) test/$(DEPDIR)/$(am__dirstamp)
-test/test_test_safecrex-bloom_tests.$(OBJEXT):  \
-	test/$(am__dirstamp) test/$(DEPDIR)/$(am__dirstamp)
-test/test_test_safecrex-bswap_tests.$(OBJEXT):  \
-	test/$(am__dirstamp) test/$(DEPDIR)/$(am__dirstamp)
+test/test_test_safecrex-base32_tests.$(OBJEXT): test/$(am__dirstamp) \
+	test/$(DEPDIR)/$(am__dirstamp)
+test/test_test_safecrex-base58_tests.$(OBJEXT): test/$(am__dirstamp) \
+	test/$(DEPDIR)/$(am__dirstamp)
+test/test_test_safecrex-base64_tests.$(OBJEXT): test/$(am__dirstamp) \
+	test/$(DEPDIR)/$(am__dirstamp)
+test/test_test_safecrex-bip32_tests.$(OBJEXT): test/$(am__dirstamp) \
+	test/$(DEPDIR)/$(am__dirstamp)
+test/test_test_safecrex-bip39_tests.$(OBJEXT): test/$(am__dirstamp) \
+	test/$(DEPDIR)/$(am__dirstamp)
+test/test_test_safecrex-bloom_tests.$(OBJEXT): test/$(am__dirstamp) \
+	test/$(DEPDIR)/$(am__dirstamp)
+test/test_test_safecrex-bswap_tests.$(OBJEXT): test/$(am__dirstamp) \
+	test/$(DEPDIR)/$(am__dirstamp)
 test/test_test_safecrex-cachemap_tests.$(OBJEXT):  \
 	test/$(am__dirstamp) test/$(DEPDIR)/$(am__dirstamp)
 test/test_test_safecrex-cachemultimap_tests.$(OBJEXT):  \
 	test/$(am__dirstamp) test/$(DEPDIR)/$(am__dirstamp)
 test/test_test_safecrex-checkblock_tests.$(OBJEXT):  \
 	test/$(am__dirstamp) test/$(DEPDIR)/$(am__dirstamp)
-test/test_test_safecrex-coins_tests.$(OBJEXT):  \
-	test/$(am__dirstamp) test/$(DEPDIR)/$(am__dirstamp)
+test/test_test_safecrex-coins_tests.$(OBJEXT): test/$(am__dirstamp) \
+	test/$(DEPDIR)/$(am__dirstamp)
 test/test_test_safecrex-compress_tests.$(OBJEXT):  \
 	test/$(am__dirstamp) test/$(DEPDIR)/$(am__dirstamp)
-test/test_test_safecrex-crypto_tests.$(OBJEXT):  \
-	test/$(am__dirstamp) test/$(DEPDIR)/$(am__dirstamp)
-test/test_test_safecrex-DoS_tests.$(OBJEXT):  \
-	test/$(am__dirstamp) test/$(DEPDIR)/$(am__dirstamp)
-test/test_test_safecrex-getarg_tests.$(OBJEXT):  \
-	test/$(am__dirstamp) test/$(DEPDIR)/$(am__dirstamp)
+test/test_test_safecrex-crypto_tests.$(OBJEXT): test/$(am__dirstamp) \
+	test/$(DEPDIR)/$(am__dirstamp)
+test/test_test_safecrex-DoS_tests.$(OBJEXT): test/$(am__dirstamp) \
+	test/$(DEPDIR)/$(am__dirstamp)
+test/test_test_safecrex-getarg_tests.$(OBJEXT): test/$(am__dirstamp) \
+	test/$(DEPDIR)/$(am__dirstamp)
 test/test_test_safecrex-governance_validators_tests.$(OBJEXT):  \
 	test/$(am__dirstamp) test/$(DEPDIR)/$(am__dirstamp)
-test/test_test_safecrex-hash_tests.$(OBJEXT):  \
-	test/$(am__dirstamp) test/$(DEPDIR)/$(am__dirstamp)
-test/test_test_safecrex-key_tests.$(OBJEXT):  \
-	test/$(am__dirstamp) test/$(DEPDIR)/$(am__dirstamp)
+test/test_test_safecrex-hash_tests.$(OBJEXT): test/$(am__dirstamp) \
+	test/$(DEPDIR)/$(am__dirstamp)
+test/test_test_safecrex-key_tests.$(OBJEXT): test/$(am__dirstamp) \
+	test/$(DEPDIR)/$(am__dirstamp)
 test/test_test_safecrex-limitedmap_tests.$(OBJEXT):  \
 	test/$(am__dirstamp) test/$(DEPDIR)/$(am__dirstamp)
 test/test_test_safecrex-dbwrapper_tests.$(OBJEXT):  \
 	test/$(am__dirstamp) test/$(DEPDIR)/$(am__dirstamp)
-test/test_test_safecrex-main_tests.$(OBJEXT):  \
-	test/$(am__dirstamp) test/$(DEPDIR)/$(am__dirstamp)
-test/test_test_safecrex-mempool_tests.$(OBJEXT):  \
-	test/$(am__dirstamp) test/$(DEPDIR)/$(am__dirstamp)
-test/test_test_safecrex-merkle_tests.$(OBJEXT):  \
-	test/$(am__dirstamp) test/$(DEPDIR)/$(am__dirstamp)
-test/test_test_safecrex-miner_tests.$(OBJEXT):  \
-	test/$(am__dirstamp) test/$(DEPDIR)/$(am__dirstamp)
+test/test_test_safecrex-main_tests.$(OBJEXT): test/$(am__dirstamp) \
+	test/$(DEPDIR)/$(am__dirstamp)
+test/test_test_safecrex-mempool_tests.$(OBJEXT): test/$(am__dirstamp) \
+	test/$(DEPDIR)/$(am__dirstamp)
+test/test_test_safecrex-merkle_tests.$(OBJEXT): test/$(am__dirstamp) \
+	test/$(DEPDIR)/$(am__dirstamp)
+test/test_test_safecrex-miner_tests.$(OBJEXT): test/$(am__dirstamp) \
+	test/$(DEPDIR)/$(am__dirstamp)
 test/test_test_safecrex-multisig_tests.$(OBJEXT):  \
 	test/$(am__dirstamp) test/$(DEPDIR)/$(am__dirstamp)
-test/test_test_safecrex-net_tests.$(OBJEXT):  \
-	test/$(am__dirstamp) test/$(DEPDIR)/$(am__dirstamp)
-test/test_test_safecrex-netbase_tests.$(OBJEXT):  \
-	test/$(am__dirstamp) test/$(DEPDIR)/$(am__dirstamp)
-test/test_test_safecrex-pmt_tests.$(OBJEXT):  \
-	test/$(am__dirstamp) test/$(DEPDIR)/$(am__dirstamp)
+test/test_test_safecrex-net_tests.$(OBJEXT): test/$(am__dirstamp) \
+	test/$(DEPDIR)/$(am__dirstamp)
+test/test_test_safecrex-netbase_tests.$(OBJEXT): test/$(am__dirstamp) \
+	test/$(DEPDIR)/$(am__dirstamp)
+test/test_test_safecrex-pmt_tests.$(OBJEXT): test/$(am__dirstamp) \
+	test/$(DEPDIR)/$(am__dirstamp)
 test/test_test_safecrex-policyestimator_tests.$(OBJEXT):  \
 	test/$(am__dirstamp) test/$(DEPDIR)/$(am__dirstamp)
-test/test_test_safecrex-pow_tests.$(OBJEXT):  \
-	test/$(am__dirstamp) test/$(DEPDIR)/$(am__dirstamp)
+test/test_test_safecrex-pow_tests.$(OBJEXT): test/$(am__dirstamp) \
+	test/$(DEPDIR)/$(am__dirstamp)
 test/test_test_safecrex-prevector_tests.$(OBJEXT):  \
 	test/$(am__dirstamp) test/$(DEPDIR)/$(am__dirstamp)
 test/test_test_safecrex-ratecheck_tests.$(OBJEXT):  \
 	test/$(am__dirstamp) test/$(DEPDIR)/$(am__dirstamp)
 test/test_test_safecrex-reverselock_tests.$(OBJEXT):  \
 	test/$(am__dirstamp) test/$(DEPDIR)/$(am__dirstamp)
-test/test_test_safecrex-rpc_tests.$(OBJEXT):  \
-	test/$(am__dirstamp) test/$(DEPDIR)/$(am__dirstamp)
-test/test_test_safecrex-sanity_tests.$(OBJEXT):  \
-	test/$(am__dirstamp) test/$(DEPDIR)/$(am__dirstamp)
+test/test_test_safecrex-rpc_tests.$(OBJEXT): test/$(am__dirstamp) \
+	test/$(DEPDIR)/$(am__dirstamp)
+test/test_test_safecrex-sanity_tests.$(OBJEXT): test/$(am__dirstamp) \
+	test/$(DEPDIR)/$(am__dirstamp)
 test/test_test_safecrex-scheduler_tests.$(OBJEXT):  \
 	test/$(am__dirstamp) test/$(DEPDIR)/$(am__dirstamp)
 test/test_test_safecrex-script_P2SH_tests.$(OBJEXT):  \
 	test/$(am__dirstamp) test/$(DEPDIR)/$(am__dirstamp)
 test/test_test_safecrex-script_P2PKH_tests.$(OBJEXT):  \
 	test/$(am__dirstamp) test/$(DEPDIR)/$(am__dirstamp)
-test/test_test_safecrex-script_tests.$(OBJEXT):  \
-	test/$(am__dirstamp) test/$(DEPDIR)/$(am__dirstamp)
+test/test_test_safecrex-script_tests.$(OBJEXT): test/$(am__dirstamp) \
+	test/$(DEPDIR)/$(am__dirstamp)
 test/test_test_safecrex-scriptnum_tests.$(OBJEXT):  \
 	test/$(am__dirstamp) test/$(DEPDIR)/$(am__dirstamp)
 test/test_test_safecrex-serialize_tests.$(OBJEXT):  \
 	test/$(am__dirstamp) test/$(DEPDIR)/$(am__dirstamp)
-test/test_test_safecrex-sighash_tests.$(OBJEXT):  \
-	test/$(am__dirstamp) test/$(DEPDIR)/$(am__dirstamp)
+test/test_test_safecrex-sighash_tests.$(OBJEXT): test/$(am__dirstamp) \
+	test/$(DEPDIR)/$(am__dirstamp)
 test/test_test_safecrex-sigopcount_tests.$(OBJEXT):  \
 	test/$(am__dirstamp) test/$(DEPDIR)/$(am__dirstamp)
 test/test_test_safecrex-skiplist_tests.$(OBJEXT):  \
 	test/$(am__dirstamp) test/$(DEPDIR)/$(am__dirstamp)
-test/test_test_safecrex-streams_tests.$(OBJEXT):  \
-	test/$(am__dirstamp) test/$(DEPDIR)/$(am__dirstamp)
-test/test_test_safecrex-test_safecrex.$(OBJEXT):  \
-	test/$(am__dirstamp) test/$(DEPDIR)/$(am__dirstamp)
+test/test_test_safecrex-streams_tests.$(OBJEXT): test/$(am__dirstamp) \
+	test/$(DEPDIR)/$(am__dirstamp)
+test/test_test_safecrex-test_safecrex.$(OBJEXT): test/$(am__dirstamp) \
+	test/$(DEPDIR)/$(am__dirstamp)
 test/test_test_safecrex-timedata_tests.$(OBJEXT):  \
 	test/$(am__dirstamp) test/$(DEPDIR)/$(am__dirstamp)
 test/test_test_safecrex-transaction_tests.$(OBJEXT):  \
@@ -3881,12 +3861,12 @@ test/test_test_safecrex-txvalidationcache_tests.$(OBJEXT):  \
 	test/$(am__dirstamp) test/$(DEPDIR)/$(am__dirstamp)
 test/test_test_safecrex-versionbits_tests.$(OBJEXT):  \
 	test/$(am__dirstamp) test/$(DEPDIR)/$(am__dirstamp)
-test/test_test_safecrex-uint256_tests.$(OBJEXT):  \
-	test/$(am__dirstamp) test/$(DEPDIR)/$(am__dirstamp)
+test/test_test_safecrex-uint256_tests.$(OBJEXT): test/$(am__dirstamp) \
+	test/$(DEPDIR)/$(am__dirstamp)
 test/test_test_safecrex-univalue_tests.$(OBJEXT):  \
 	test/$(am__dirstamp) test/$(DEPDIR)/$(am__dirstamp)
-test/test_test_safecrex-util_tests.$(OBJEXT):  \
-	test/$(am__dirstamp) test/$(DEPDIR)/$(am__dirstamp)
+test/test_test_safecrex-util_tests.$(OBJEXT): test/$(am__dirstamp) \
+	test/$(DEPDIR)/$(am__dirstamp)
 test/test_test_safecrex-accounting_tests.$(OBJEXT):  \
 	test/$(am__dirstamp) test/$(DEPDIR)/$(am__dirstamp)
 wallet/test/$(am__dirstamp):
@@ -3936,9 +3916,6 @@ mostlyclean-compile:
 distclean-compile:
 	-rm -f *.tab.c
 
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/safecrex_cli-safecrex-cli.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/safecrex_tx-safecrex-tx.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/safecrexd-safecrexd.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libbitcoin_common_a-amount.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libbitcoin_common_a-arith_uint256.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libbitcoin_common_a-base58.Po@am__quote@
@@ -4018,6 +3995,9 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libsafecrexconsensus_la-pubkey.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libsafecrexconsensus_la-uint256.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libsafecrexconsensus_la-utilstrencodings.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/safecrex_cli-safecrex-cli.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/safecrex_tx-safecrex-tx.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/safecrexd-safecrexd.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@bench/$(DEPDIR)/bench_bench_safecrex-Examples.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@bench/$(DEPDIR)/bench_bench_safecrex-bench.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@bench/$(DEPDIR)/bench_bench_safecrex-bench_safecrex.Po@am__quote@
@@ -4098,9 +4078,6 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@primitives/$(DEPDIR)/libbitcoin_common_a-block.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@primitives/$(DEPDIR)/libbitcoin_common_a-transaction.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@primitives/$(DEPDIR)/libsafecrexconsensus_la-transaction.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@qt/$(DEPDIR)/qt_safecrex_qt-safecrex.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@qt/$(DEPDIR)/qt_safecrex_qt-macdockiconhandler.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@qt/$(DEPDIR)/qt_safecrex_qt-macnotificationhandler.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@qt/$(DEPDIR)/qt_libbitcoinqt_a-addressbookpage.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@qt/$(DEPDIR)/qt_libbitcoinqt_a-addresstablemodel.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@qt/$(DEPDIR)/qt_libbitcoinqt_a-askpassphrasedialog.Po@am__quote@
@@ -4203,6 +4180,9 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@qt/$(DEPDIR)/qt_libbitcoinqt_a-walletmodeltransaction.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@qt/$(DEPDIR)/qt_libbitcoinqt_a-walletview.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@qt/$(DEPDIR)/qt_libbitcoinqt_a-winshutdownmonitor.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@qt/$(DEPDIR)/qt_safecrex_qt-macdockiconhandler.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@qt/$(DEPDIR)/qt_safecrex_qt-macnotificationhandler.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@qt/$(DEPDIR)/qt_safecrex_qt-safecrex.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@qt/test/$(DEPDIR)/qt_test_test_safecrex_qt-compattests.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@qt/test/$(DEPDIR)/qt_test_test_safecrex_qt-moc_compattests.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@qt/test/$(DEPDIR)/qt_test_test_safecrex_qt-moc_paymentservertests.Po@am__quote@
@@ -4228,8 +4208,8 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@script/$(DEPDIR)/libbitcoin_common_a-sign.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@script/$(DEPDIR)/libbitcoin_common_a-standard.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@script/$(DEPDIR)/libbitcoin_server_a-sigcache.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@script/$(DEPDIR)/libsafecrexconsensus_la-safecrexconsensus.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@script/$(DEPDIR)/libsafecrexconsensus_la-interpreter.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@script/$(DEPDIR)/libsafecrexconsensus_la-safecrexconsensus.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@script/$(DEPDIR)/libsafecrexconsensus_la-script.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@support/$(DEPDIR)/libbitcoin_util_a-cleanse.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@support/$(DEPDIR)/libbitcoin_util_a-pagelocker.Po@am__quote@
@@ -8342,48 +8322,6 @@ bench/bench_bench_safecrex-Examples.obj: bench/Examples.cpp
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(bench_bench_safecrex_CPPFLAGS) $(CPPFLAGS) $(bench_bench_safecrex_CXXFLAGS) $(CXXFLAGS) -c -o bench/bench_bench_safecrex-Examples.obj `if test -f 'bench/Examples.cpp'; then $(CYGPATH_W) 'bench/Examples.cpp'; else $(CYGPATH_W) '$(srcdir)/bench/Examples.cpp'; fi`
 
-safecrex_cli-safecrex-cli.o: safecrex-cli.cpp
-@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(safecrex_cli_CPPFLAGS) $(CPPFLAGS) $(safecrex_cli_CXXFLAGS) $(CXXFLAGS) -MT safecrex_cli-safecrex-cli.o -MD -MP -MF $(DEPDIR)/safecrex_cli-safecrex-cli.Tpo -c -o safecrex_cli-safecrex-cli.o `test -f 'safecrex-cli.cpp' || echo '$(srcdir)/'`safecrex-cli.cpp
-@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/safecrex_cli-safecrex-cli.Tpo $(DEPDIR)/safecrex_cli-safecrex-cli.Po
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='safecrex-cli.cpp' object='safecrex_cli-safecrex-cli.o' libtool=no @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(safecrex_cli_CPPFLAGS) $(CPPFLAGS) $(safecrex_cli_CXXFLAGS) $(CXXFLAGS) -c -o safecrex_cli-safecrex-cli.o `test -f 'safecrex-cli.cpp' || echo '$(srcdir)/'`safecrex-cli.cpp
-
-safecrex_cli-safecrex-cli.obj: safecrex-cli.cpp
-@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(safecrex_cli_CPPFLAGS) $(CPPFLAGS) $(safecrex_cli_CXXFLAGS) $(CXXFLAGS) -MT safecrex_cli-safecrex-cli.obj -MD -MP -MF $(DEPDIR)/safecrex_cli-safecrex-cli.Tpo -c -o safecrex_cli-safecrex-cli.obj `if test -f 'safecrex-cli.cpp'; then $(CYGPATH_W) 'safecrex-cli.cpp'; else $(CYGPATH_W) '$(srcdir)/safecrex-cli.cpp'; fi`
-@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/safecrex_cli-safecrex-cli.Tpo $(DEPDIR)/safecrex_cli-safecrex-cli.Po
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='safecrex-cli.cpp' object='safecrex_cli-safecrex-cli.obj' libtool=no @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(safecrex_cli_CPPFLAGS) $(CPPFLAGS) $(safecrex_cli_CXXFLAGS) $(CXXFLAGS) -c -o safecrex_cli-safecrex-cli.obj `if test -f 'safecrex-cli.cpp'; then $(CYGPATH_W) 'safecrex-cli.cpp'; else $(CYGPATH_W) '$(srcdir)/safecrex-cli.cpp'; fi`
-
-safecrex_tx-safecrex-tx.o: safecrex-tx.cpp
-@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(safecrex_tx_CPPFLAGS) $(CPPFLAGS) $(safecrex_tx_CXXFLAGS) $(CXXFLAGS) -MT safecrex_tx-safecrex-tx.o -MD -MP -MF $(DEPDIR)/safecrex_tx-safecrex-tx.Tpo -c -o safecrex_tx-safecrex-tx.o `test -f 'safecrex-tx.cpp' || echo '$(srcdir)/'`safecrex-tx.cpp
-@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/safecrex_tx-safecrex-tx.Tpo $(DEPDIR)/safecrex_tx-safecrex-tx.Po
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='safecrex-tx.cpp' object='safecrex_tx-safecrex-tx.o' libtool=no @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(safecrex_tx_CPPFLAGS) $(CPPFLAGS) $(safecrex_tx_CXXFLAGS) $(CXXFLAGS) -c -o safecrex_tx-safecrex-tx.o `test -f 'safecrex-tx.cpp' || echo '$(srcdir)/'`safecrex-tx.cpp
-
-safecrex_tx-safecrex-tx.obj: safecrex-tx.cpp
-@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(safecrex_tx_CPPFLAGS) $(CPPFLAGS) $(safecrex_tx_CXXFLAGS) $(CXXFLAGS) -MT safecrex_tx-safecrex-tx.obj -MD -MP -MF $(DEPDIR)/safecrex_tx-safecrex-tx.Tpo -c -o safecrex_tx-safecrex-tx.obj `if test -f 'safecrex-tx.cpp'; then $(CYGPATH_W) 'safecrex-tx.cpp'; else $(CYGPATH_W) '$(srcdir)/safecrex-tx.cpp'; fi`
-@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/safecrex_tx-safecrex-tx.Tpo $(DEPDIR)/safecrex_tx-safecrex-tx.Po
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='safecrex-tx.cpp' object='safecrex_tx-safecrex-tx.obj' libtool=no @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(safecrex_tx_CPPFLAGS) $(CPPFLAGS) $(safecrex_tx_CXXFLAGS) $(CXXFLAGS) -c -o safecrex_tx-safecrex-tx.obj `if test -f 'safecrex-tx.cpp'; then $(CYGPATH_W) 'safecrex-tx.cpp'; else $(CYGPATH_W) '$(srcdir)/safecrex-tx.cpp'; fi`
-
-safecrexd-safecrexd.o: safecrexd.cpp
-@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(safecrexd_CPPFLAGS) $(CPPFLAGS) $(safecrexd_CXXFLAGS) $(CXXFLAGS) -MT safecrexd-safecrexd.o -MD -MP -MF $(DEPDIR)/safecrexd-safecrexd.Tpo -c -o safecrexd-safecrexd.o `test -f 'safecrexd.cpp' || echo '$(srcdir)/'`safecrexd.cpp
-@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/safecrexd-safecrexd.Tpo $(DEPDIR)/safecrexd-safecrexd.Po
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='safecrexd.cpp' object='safecrexd-safecrexd.o' libtool=no @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(safecrexd_CPPFLAGS) $(CPPFLAGS) $(safecrexd_CXXFLAGS) $(CXXFLAGS) -c -o safecrexd-safecrexd.o `test -f 'safecrexd.cpp' || echo '$(srcdir)/'`safecrexd.cpp
-
-safecrexd-safecrexd.obj: safecrexd.cpp
-@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(safecrexd_CPPFLAGS) $(CPPFLAGS) $(safecrexd_CXXFLAGS) $(CXXFLAGS) -MT safecrexd-safecrexd.obj -MD -MP -MF $(DEPDIR)/safecrexd-safecrexd.Tpo -c -o safecrexd-safecrexd.obj `if test -f 'safecrexd.cpp'; then $(CYGPATH_W) 'safecrexd.cpp'; else $(CYGPATH_W) '$(srcdir)/safecrexd.cpp'; fi`
-@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/safecrexd-safecrexd.Tpo $(DEPDIR)/safecrexd-safecrexd.Po
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='safecrexd.cpp' object='safecrexd-safecrexd.obj' libtool=no @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(safecrexd_CPPFLAGS) $(CPPFLAGS) $(safecrexd_CXXFLAGS) $(CXXFLAGS) -c -o safecrexd-safecrexd.obj `if test -f 'safecrexd.cpp'; then $(CYGPATH_W) 'safecrexd.cpp'; else $(CYGPATH_W) '$(srcdir)/safecrexd.cpp'; fi`
-
 qt/qt_safecrex_qt-safecrex.o: qt/safecrex.cpp
 @am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(qt_safecrex_qt_CPPFLAGS) $(CPPFLAGS) $(qt_safecrex_qt_CXXFLAGS) $(CXXFLAGS) -MT qt/qt_safecrex_qt-safecrex.o -MD -MP -MF qt/$(DEPDIR)/qt_safecrex_qt-safecrex.Tpo -c -o qt/qt_safecrex_qt-safecrex.o `test -f 'qt/safecrex.cpp' || echo '$(srcdir)/'`qt/safecrex.cpp
 @am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) qt/$(DEPDIR)/qt_safecrex_qt-safecrex.Tpo qt/$(DEPDIR)/qt_safecrex_qt-safecrex.Po
@@ -8523,6 +8461,48 @@ qt/test/qt_test_test_safecrex_qt-moc_paymentservertests.obj: qt/test/moc_payment
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='qt/test/moc_paymentservertests.cpp' object='qt/test/qt_test_test_safecrex_qt-moc_paymentservertests.obj' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(qt_test_test_safecrex_qt_CPPFLAGS) $(CPPFLAGS) $(qt_test_test_safecrex_qt_CXXFLAGS) $(CXXFLAGS) -c -o qt/test/qt_test_test_safecrex_qt-moc_paymentservertests.obj `if test -f 'qt/test/moc_paymentservertests.cpp'; then $(CYGPATH_W) 'qt/test/moc_paymentservertests.cpp'; else $(CYGPATH_W) '$(srcdir)/qt/test/moc_paymentservertests.cpp'; fi`
+
+safecrex_cli-safecrex-cli.o: safecrex-cli.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(safecrex_cli_CPPFLAGS) $(CPPFLAGS) $(safecrex_cli_CXXFLAGS) $(CXXFLAGS) -MT safecrex_cli-safecrex-cli.o -MD -MP -MF $(DEPDIR)/safecrex_cli-safecrex-cli.Tpo -c -o safecrex_cli-safecrex-cli.o `test -f 'safecrex-cli.cpp' || echo '$(srcdir)/'`safecrex-cli.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/safecrex_cli-safecrex-cli.Tpo $(DEPDIR)/safecrex_cli-safecrex-cli.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='safecrex-cli.cpp' object='safecrex_cli-safecrex-cli.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(safecrex_cli_CPPFLAGS) $(CPPFLAGS) $(safecrex_cli_CXXFLAGS) $(CXXFLAGS) -c -o safecrex_cli-safecrex-cli.o `test -f 'safecrex-cli.cpp' || echo '$(srcdir)/'`safecrex-cli.cpp
+
+safecrex_cli-safecrex-cli.obj: safecrex-cli.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(safecrex_cli_CPPFLAGS) $(CPPFLAGS) $(safecrex_cli_CXXFLAGS) $(CXXFLAGS) -MT safecrex_cli-safecrex-cli.obj -MD -MP -MF $(DEPDIR)/safecrex_cli-safecrex-cli.Tpo -c -o safecrex_cli-safecrex-cli.obj `if test -f 'safecrex-cli.cpp'; then $(CYGPATH_W) 'safecrex-cli.cpp'; else $(CYGPATH_W) '$(srcdir)/safecrex-cli.cpp'; fi`
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/safecrex_cli-safecrex-cli.Tpo $(DEPDIR)/safecrex_cli-safecrex-cli.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='safecrex-cli.cpp' object='safecrex_cli-safecrex-cli.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(safecrex_cli_CPPFLAGS) $(CPPFLAGS) $(safecrex_cli_CXXFLAGS) $(CXXFLAGS) -c -o safecrex_cli-safecrex-cli.obj `if test -f 'safecrex-cli.cpp'; then $(CYGPATH_W) 'safecrex-cli.cpp'; else $(CYGPATH_W) '$(srcdir)/safecrex-cli.cpp'; fi`
+
+safecrex_tx-safecrex-tx.o: safecrex-tx.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(safecrex_tx_CPPFLAGS) $(CPPFLAGS) $(safecrex_tx_CXXFLAGS) $(CXXFLAGS) -MT safecrex_tx-safecrex-tx.o -MD -MP -MF $(DEPDIR)/safecrex_tx-safecrex-tx.Tpo -c -o safecrex_tx-safecrex-tx.o `test -f 'safecrex-tx.cpp' || echo '$(srcdir)/'`safecrex-tx.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/safecrex_tx-safecrex-tx.Tpo $(DEPDIR)/safecrex_tx-safecrex-tx.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='safecrex-tx.cpp' object='safecrex_tx-safecrex-tx.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(safecrex_tx_CPPFLAGS) $(CPPFLAGS) $(safecrex_tx_CXXFLAGS) $(CXXFLAGS) -c -o safecrex_tx-safecrex-tx.o `test -f 'safecrex-tx.cpp' || echo '$(srcdir)/'`safecrex-tx.cpp
+
+safecrex_tx-safecrex-tx.obj: safecrex-tx.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(safecrex_tx_CPPFLAGS) $(CPPFLAGS) $(safecrex_tx_CXXFLAGS) $(CXXFLAGS) -MT safecrex_tx-safecrex-tx.obj -MD -MP -MF $(DEPDIR)/safecrex_tx-safecrex-tx.Tpo -c -o safecrex_tx-safecrex-tx.obj `if test -f 'safecrex-tx.cpp'; then $(CYGPATH_W) 'safecrex-tx.cpp'; else $(CYGPATH_W) '$(srcdir)/safecrex-tx.cpp'; fi`
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/safecrex_tx-safecrex-tx.Tpo $(DEPDIR)/safecrex_tx-safecrex-tx.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='safecrex-tx.cpp' object='safecrex_tx-safecrex-tx.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(safecrex_tx_CPPFLAGS) $(CPPFLAGS) $(safecrex_tx_CXXFLAGS) $(CXXFLAGS) -c -o safecrex_tx-safecrex-tx.obj `if test -f 'safecrex-tx.cpp'; then $(CYGPATH_W) 'safecrex-tx.cpp'; else $(CYGPATH_W) '$(srcdir)/safecrex-tx.cpp'; fi`
+
+safecrexd-safecrexd.o: safecrexd.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(safecrexd_CPPFLAGS) $(CPPFLAGS) $(safecrexd_CXXFLAGS) $(CXXFLAGS) -MT safecrexd-safecrexd.o -MD -MP -MF $(DEPDIR)/safecrexd-safecrexd.Tpo -c -o safecrexd-safecrexd.o `test -f 'safecrexd.cpp' || echo '$(srcdir)/'`safecrexd.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/safecrexd-safecrexd.Tpo $(DEPDIR)/safecrexd-safecrexd.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='safecrexd.cpp' object='safecrexd-safecrexd.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(safecrexd_CPPFLAGS) $(CPPFLAGS) $(safecrexd_CXXFLAGS) $(CXXFLAGS) -c -o safecrexd-safecrexd.o `test -f 'safecrexd.cpp' || echo '$(srcdir)/'`safecrexd.cpp
+
+safecrexd-safecrexd.obj: safecrexd.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(safecrexd_CPPFLAGS) $(CPPFLAGS) $(safecrexd_CXXFLAGS) $(CXXFLAGS) -MT safecrexd-safecrexd.obj -MD -MP -MF $(DEPDIR)/safecrexd-safecrexd.Tpo -c -o safecrexd-safecrexd.obj `if test -f 'safecrexd.cpp'; then $(CYGPATH_W) 'safecrexd.cpp'; else $(CYGPATH_W) '$(srcdir)/safecrexd.cpp'; fi`
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/safecrexd-safecrexd.Tpo $(DEPDIR)/safecrexd-safecrexd.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='safecrexd.cpp' object='safecrexd-safecrexd.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(safecrexd_CPPFLAGS) $(CPPFLAGS) $(safecrexd_CXXFLAGS) $(CXXFLAGS) -c -o safecrexd-safecrexd.obj `if test -f 'safecrexd.cpp'; then $(CYGPATH_W) 'safecrexd.cpp'; else $(CYGPATH_W) '$(srcdir)/safecrexd.cpp'; fi`
 
 test/test_test_safecrex-arith_uint256_tests.o: test/arith_uint256_tests.cpp
 @am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(test_test_safecrex_CPPFLAGS) $(CPPFLAGS) $(test_test_safecrex_CXXFLAGS) $(CXXFLAGS) -MT test/test_test_safecrex-arith_uint256_tests.o -MD -MP -MF test/$(DEPDIR)/test_test_safecrex-arith_uint256_tests.Tpo -c -o test/test_test_safecrex-arith_uint256_tests.o `test -f 'test/arith_uint256_tests.cpp' || echo '$(srcdir)/'`test/arith_uint256_tests.cpp
