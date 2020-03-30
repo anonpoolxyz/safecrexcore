@@ -1,7 +1,7 @@
-Safecrex Core staging tree 1.0.0
+Safecrex Core  
 ===============================
 
-`master:` [![Build Status](https://travis-ci.org/safecrexpay/safecrex.svg?branch=master)](https://travis-ci.org/safecrexpay/safecrex) `develop:` [![Build Status](https://travis-ci.org/safecrexpay/safecrex.svg?branch=develop)](https://travis-ci.org/safecrexpay/safecrex/branches)
+ 
 
 https://www.safecrex.trade
 
@@ -18,7 +18,18 @@ source software which enables the use of this currency.
 For more information, as well as an immediately useable, binary version of
 the Safecrex Core software, see https://www.safecrex.trade
 
+Specification
 
+ - Name: Safecrex
+ - Ticker: SFCX
+ - Premine: 10,000,000 SFCX
+ - Pow Reward: 10 SFCX
+ - Masternode Reward: 70%
+ - Masternode collateral: 1,000 SFCX
+ - Algo: x11
+ - RPC PORT: 9791
+ - P2P PORT: 9792
+ 
 License
 -------
 
@@ -29,7 +40,7 @@ Development Process
 -------------------
 
 The `master` branch is meant to be stable. Development is normally done in separate branches.
-[Tags](https://github.com/safecrex-official/safecrex/tags) are created to indicate new official,
+[Tags](https://github.com/safecrex/safecrexcore/tags) are created to indicate new official,
 stable release versions of Safecrex Core.
 
 The contribution workflow is described in [CONTRIBUTING.md](CONTRIBUTING.md).
@@ -74,4 +85,5 @@ Translations are periodically pulled from Transifex and merged into the git repo
 **Important**: We do not accept translation changes as GitHub pull requests because the next
 pull from Transifex would automatically overwrite them again.
 
-Translators should also follow the [forum](https://www.safecrex.org/forum/topic/safecrex-worldwide-collaboration.88/).
+ 
+
