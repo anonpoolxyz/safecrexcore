@@ -1,7 +1,6 @@
 Safecrex Core staging tree 1.0.0
 ===============================
 
-`master:` [![Build Status](https://travis-ci.org/safecrexpay/safecrex.svg?branch=master)](https://travis-ci.org/safecrexpay/safecrex) `develop:` [![Build Status](https://travis-ci.org/safecrexpay/safecrex.svg?branch=develop)](https://travis-ci.org/safecrexpay/safecrex/branches)
 
 https://www.safecrex.trade
 
@@ -19,6 +18,17 @@ For more information, as well as an immediately useable, binary version of
 the Safecrex Core software, see https://www.safecrex.trade
 
 
+ - Name: Safecrex
+ - Ticker: SFCX
+ - Premine: 10,000,000 SFCX
+ - Pow Reward: 10 SFCX
+ - Masternode Reward: 70%
+ - Masternode collateral: 1,000 SFCX
+ - Algo: x11
+ - RPC PORT: 9791
+ - P2P PORT: 9792
+ 
+ 
 License
 -------
 
