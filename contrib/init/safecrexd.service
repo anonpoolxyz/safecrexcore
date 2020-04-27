@@ -1,0 +1,22 @@
+[Unit]
+Description=Safecrex's distributed currency daemon
+After=network.target
+
+[Service]
+User=safecrexcore
+Group=safecrexcore
+
+Type=forking
+PIDFile=/var/lib/safecrexd/safecrexd.pid
+ExecStart=/usr/bin/safecrexd -daemon -pid=/var/lib/safecrexd/safecrexd.pid \
+-conf=/etc/safecrexcore/safecrex.conf -datadir=/var/lib/safecrexd -disablewallet
+
+Restart=always
+PrivateTmp=true
+TimeoutStopSec=60s
+TimeoutStartSec=2s
+StartLimitInterval=120s
+StartLimitBurst=5
+
+[Install]
+WantedBy=multi-user.target
