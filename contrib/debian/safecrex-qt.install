@@ -1,6 +1,0 @@
-usr/local/bin/safecrex-qt usr/bin
-share/pixmaps/safecrex32.xpm usr/share/pixmaps
-share/pixmaps/safecrex16.xpm usr/share/pixmaps
-share/pixmaps/safecrex128.png usr/share/pixmaps
-debian/safecrex-qt.desktop usr/share/applications
-debian/safecrex-qt.protocol usr/share/kde4/services/
